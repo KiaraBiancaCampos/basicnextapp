@@ -41,7 +41,7 @@ const finalConfig = useExplicitConfig
 
 // Always log config in production for debugging the "hang" issue
 console.log(`[DB Config] Host=${process.env.DB_HOST || 'via-url'}, User=${process.env.DB_USER}, SSL=${!!finalConfig.ssl}, Max=${finalConfig.max}, Timeout=${finalConfig.connectionTimeoutMillis}`);
-
+// console.log(`[DB Config] Host=${process.env.DB_HOST || 'via-url'}, User=${process.env.DB_USER}`)
 export const pool = globalForPool.pool || new Pool(finalConfig);
 
 if (process.env.NODE_ENV !== 'production') globalForPool.pool = pool;
