@@ -34,6 +34,7 @@ export const authOptions = {
     trustedOrigins: [
         "http://localhost:3000",
         "https://basicnextapp.vercel.app",
+        "https://basicnextapp-liard.vercel.app"
     ],
     // advanced: {
     //     trustHost: true, // Important for Vercel proxy headers
