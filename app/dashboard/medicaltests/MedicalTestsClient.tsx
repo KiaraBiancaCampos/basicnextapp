@@ -1,4 +1,3 @@
-// app/medicaltests/MedicalTestsClient.tsx
 'use client'; 
 
 import { saveAs } from 'file-saver';
