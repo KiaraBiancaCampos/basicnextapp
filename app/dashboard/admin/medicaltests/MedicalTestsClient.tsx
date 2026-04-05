@@ -9,7 +9,6 @@ export default function MedicalTestsClient({ rows }: { rows: any[] }) {
   
   // Excel download function
   const downloadExcel = () => {
-    // 1. Format the data specifically for Excel so the columns look nice
     const formattedData = rows.map(row => ({
       'Test Name': row.name,
       'Category': row.category,
@@ -23,8 +22,7 @@ export default function MedicalTestsClient({ rows }: { rows: any[] }) {
     XLSX.utils.book_append_sheet(wb, ws, 'Medical Tests');
     const buf = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([buf], { type: 'application/octet-stream' });
-    
-    // Save as specifically MedicalTests.xlsx
+   
     saveAs(blob, 'MedicalTests.xlsx');
   };
 
@@ -33,14 +31,12 @@ export default function MedicalTestsClient({ rows }: { rows: any[] }) {
     const doc = new jsPDF('p', 'mm', 'a4'); 
     doc.text('Medical Tests List', 14, 15);
     
-    // 2. Map the body specifically to the Medical Tests rows
     (doc as any).autoTable({
       head: [['Test Name', 'Category', 'Unit', 'Min', 'Max']],
       body: rows.map(r => [r.name, r.category, r.unit, r.normalmin, r.normalmax]),
       startY: 20,
     });
     
-    // Save as specifically MedicalTests.pdf
     doc.save('MedicalTests.pdf');
   };
 
